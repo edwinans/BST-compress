@@ -1,0 +1,9 @@
+compressor.cmo : constructor.cmi compressor.cmi
+compressor.cmx : constructor.cmx compressor.cmi
+compressor.cmi : constructor.cmi
+constructor.cmo : constructor.cmi
+constructor.cmx : constructor.cmi
+constructor.cmi :
+randomGenerator.cmo : randomGenerator.cmi
+randomGenerator.cmx : randomGenerator.cmi
+randomGenerator.cmi :

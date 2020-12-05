@@ -7,5 +7,5 @@ constructor.cmi :
 randomGenerator.cmo : randomGenerator.cmi
 randomGenerator.cmx : randomGenerator.cmi
 randomGenerator.cmi :
-test.cmo :
-test.cmx :
+test.cmo : randomGenerator.cmi constructor.cmi compressor.cmi
+test.cmx : randomGenerator.cmx constructor.cmx compressor.cmx

@@ -1,6 +1,6 @@
 (* partie 2 *)
 
-open Constructor ;;
+open Constructor
 
 type c_tree = 
     | Empty
@@ -39,7 +39,7 @@ let rec c_get_size (t : c_tree) = match t with
 let compress (t : binary_tree) : c_tree = 
     let patterns = ref [] in
 
-    let rec aux (t:binary_tree)  = match t with
+    let rec aux (t:binary_tree) = match t with
     | Empty -> Empty
     | Node(l, e, r) -> 
         match find !patterns (phi t) with
@@ -79,4 +79,3 @@ let rec search (t : c_tree) x =
     aux t x 0 [||] ;;
 
 (* Q2.12 complexite en moyenne : n(log n) *)
-

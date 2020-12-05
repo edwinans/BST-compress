@@ -7,3 +7,5 @@ constructor.cmi :
 randomGenerator.cmo : randomGenerator.cmi
 randomGenerator.cmx : randomGenerator.cmi
 randomGenerator.cmi :
+test.cmo :
+test.cmx :

@@ -68,11 +68,11 @@
 #
 # The Caml sources (including camlyacc and camllex source files)
 
-SOURCES = constructor.ml compressor.ml 
+SOURCES = compressor.ml constructor.ml randomGenerator.ml
 
 # The executable file to generate (default a.out under Unix)
 
-EXEC = prog.o
+EXEC = test.o
 
 
 ########################## Advanced user's variables #####################

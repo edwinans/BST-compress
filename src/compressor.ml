@@ -65,17 +65,20 @@ let rec search (t : c_tree) x =
     | Empty -> false 
     | Node(l, e, r, ls, rs) -> 
         let elem = if arr = [||] then e else arr.(i) in
-        if x = elem then true else if x<elem then
-            if arr=[||] then aux l x i arr else aux l x (i+1) arr else
+        if x = elem then true
+        else if x<elem then
+            if arr=[||] then aux l x i arr else aux l x (i+1) arr
+        else
             if arr=[||] then aux r x i arr else aux r x (i+1+ls) arr      
     | C_Node(tree, a) ->
-        let ls = fst(c_get_size !tree) and
-        array = if arr = [||] then a else arr in 
+        let array = if arr = [||] then a else arr in 
         let e = array.(i) in
         if x = e then true else
-            if ls=0 then false else
-                if x<e then aux !tree x (i+1) array 
-                else aux !tree x (i+1+ls) array in 
+            match !tree with
+                | Node(l, _, r, ls, _) ->
+                    if x<e then aux l x (i+1) array 
+                    else aux r x (i+1+ls) array 
+                | _ -> false in
     aux t x 0 [||] ;;
 
 (* Q2.12 complexite en moyenne : n(log n) *)

@@ -1,7 +1,6 @@
 (* parites 1.1 et 1.2 *)
 
 let remove_nth l i = 
-    (* tail recursive *)
     let rec aux l i acc = match l with
         | [] -> failwith "list too short"
         | x :: xs -> if i = 0 then (List.rev acc) @ xs else aux xs (i-1) (x :: acc) in 

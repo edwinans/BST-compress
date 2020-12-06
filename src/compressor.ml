@@ -5,16 +5,16 @@ open Constructor
 type c_tree = 
     | Empty
     | C_Node of c_tree ref * int array
-    | Node of c_tree * int * c_tree * int * int;;
+    | Node of c_tree * int * c_tree * int * int ;;
 
 
 let rec phi (t : binary_tree) = match t with
     | Empty -> ""
-    | Node(l, e, r) -> "(" ^ (phi l) ^ ")" ^ (phi r);;
+    | Node(l, e, r) -> "(" ^ (phi l) ^ ")" ^ (phi r) ;;
 
 
 (* example Q1.7 *)
-let test_tree = ref (construct [4;2;3;8;1;9;6;7;5]);;
+let test_tree = ref (construct [4;2;3;8;1;9;6;7;5]) ;;
 
 let rec prefix (t : binary_tree) = match t with 
     | Empty -> []
@@ -72,13 +72,8 @@ let rec search (t : c_tree) x =
             if arr=[||] then aux r x i arr else aux r x (i+1+ls) arr      
     | C_Node(tree, a) ->
         let array = if arr = [||] then a else arr in 
-        let e = array.(i) in
-        if x = e then true else
-            match !tree with
-                | Node(l, _, r, ls, _) ->
-                    if x<e then aux l x (i+1) array 
-                    else aux r x (i+1+ls) array 
-                | _ -> false in
+        aux !tree x i array in
+        
     aux t x 0 [||] ;;
 
 (* Q2.12 complexite en moyenne : n(log n) *)

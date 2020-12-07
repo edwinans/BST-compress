@@ -4,6 +4,8 @@ compressor.cmi : constructor.cmi
 constructor.cmo : constructor.cmi
 constructor.cmx : constructor.cmi
 constructor.cmi :
+experiments.cmo : randomGenerator.cmi constructor.cmi compressor.cmi
+experiments.cmx : randomGenerator.cmx constructor.cmx compressor.cmx
 randomGenerator.cmo : randomGenerator.cmi
 randomGenerator.cmx : randomGenerator.cmi
 randomGenerator.cmi :

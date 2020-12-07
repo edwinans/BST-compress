@@ -68,7 +68,7 @@
 #
 # The Caml sources (including camlyacc and camllex source files)
 
-SOURCES = constructor.ml randomGenerator.ml compressor.ml test.ml
+SOURCES =  constructor.ml randomGenerator.ml compressor.ml experiments.ml test.ml
 
 # The executable file to generate (default a.out under Unix)
 
@@ -90,7 +90,7 @@ CAMLYACC = ocamlyacc
 # LIBS=$(WITHGRAPHICS) $(WITHUNIX) $(WITHSTR) $(WITHNUMS) $(WITHTHREADS)\
 # $(WITHDBM)
 
-LIBS=
+LIBS= $(WITHUNIX)
 
 # Should be set to -custom if you use any of the libraries above
 # or if any C code have to be linked with your program

@@ -23,7 +23,7 @@ let gen_permutation n =
     let rec aux (l,p) = 
         if List.length l = 0 then p 
         else aux (extraction_alea l p) in 
-    aux (range 1 n,[])
+    aux (range 1 n,[])  
 
 (* Q1.3 : O(n) en nb d'appelle a Random.int et O(n^2) en nb de match *)
 

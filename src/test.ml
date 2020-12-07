@@ -13,10 +13,11 @@ let main () =
     let bt = construct (perm) in 
     let ct = compress bt in
     begin
-        let _= Random.self_init () in
+        range 1 100_000_000;
+        (* let _= Random.self_init () in
         let r = Random.int (2*n) in
         print_endline("r = "^ (string_of_int r));
-        print_endline(string_of_bool (search ct r));
+        print_endline(string_of_bool (search ct r)); *)
     end ;;
 
 main () ;;

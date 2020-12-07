@@ -1,23 +1,27 @@
 open Constructor ;;
 open RandomGenerator ;;
 open Compressor ;;
+open Experiments ;;
 
 let rec print_list = function
     | [] -> print_string("")
     | x :: xs -> (print_string((string_of_int x) ^ " "); print_list xs)
 
+
 let main () = 
     let _ = print_endline("Enter the size : ") in
     let n = read_int () in
-    let perm = gen_permutation n in
-    let bt = construct (perm) in 
-    let ct = compress bt in
     begin
-        range 1 100_000_000;
-        (* let _= Random.self_init () in
+        (* Experiments.test(); pour generer les donnees de teste *)
+        let perm = gen_permutation2 1 n in
+        print_list perm;
+        print_newline () ;
+        let bt = construct perm in
+        let ct = compress bt in
+        let _= Random.self_init () in
         let r = Random.int (2*n) in
         print_endline("r = "^ (string_of_int r));
-        print_endline(string_of_bool (search ct r)); *)
+        print_endline(string_of_bool (search ct r));
     end ;;
 
 main () ;;

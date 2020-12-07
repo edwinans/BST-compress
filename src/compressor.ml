@@ -76,4 +76,4 @@ let rec search (t : c_tree) x =
         
     aux t x 0 [||] ;;
 
-(* Q2.12 complexite en moyenne : n(log n) *)
+(* Q2.12 complexite en moyenne : (log n) *)

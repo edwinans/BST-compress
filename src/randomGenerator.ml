@@ -40,7 +40,7 @@ let intercale l1 l2 =
     List.rev (aux l1 l2 (List.length l1) (List.length l2) [])
 
 let rec gen_permutation2 p q = 
-    if p>q then [] else if p = q then [p] else 
+    if p>q then [] else if p = q then [p] else
     intercale (gen_permutation2 p ((p+q)/2)) (gen_permutation2 ((p+q)/2 + 1) q) 
 
 (* Q1.6 : n(log n) en nb de Random.int et n(log n) en nb de match *)

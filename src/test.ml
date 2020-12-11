@@ -18,7 +18,7 @@ let main () =
         print_newline () ;
         let bt = construct perm in
         let ct = compress bt in
-        let _= Random.self_init () in
+        let _ = Random.self_init () in
         let r = Random.int (2*n) in
         print_endline("r = "^ (string_of_int r));
         print_endline(string_of_bool (search ct r));

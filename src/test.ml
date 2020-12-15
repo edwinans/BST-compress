@@ -11,19 +11,19 @@ let rec print_list = function
 
 
 let main () = 
-    (* let _ = print_endline("Enter the size : ") in
-    let n = read_int () in *)
+    let _ = print_endline("Enter the size : ") in
+    let n = read_int () in
     begin
-        Experiments.test(); 
-        (* let perm = gen_permutation2 1 n in
+        (* Experiments.test();  *) (*pour generer les jeu de testes*)
+        let perm = gen_permutation2 1 n in
         print_list perm;
         print_newline () ;
         let bt = construct perm in
         let ct = compress bt in
         let _ = Random.self_init () in
-        let r = Random.int (2*n) in *)
-        (* print_endline("r = "^ (string_of_int r));
-        print_endline(string_of_bool (search ct r)); *)
+        let r = Random.int (2*n) in
+        print_endline("r = "^ (string_of_int r));
+        print_endline(string_of_bool (search ct r));
     end ;;
 
 main () ;;

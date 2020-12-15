@@ -4,8 +4,8 @@ open Constructor
 
 type c_tree = 
     | Empty
-    | C_Node of c_tree ref * int array
-    | Node of c_tree * int * c_tree * int * int ;;
+    | C_Node of c_tree * int array 
+    | Node of c_tree * int * c_tree * int ;;
 
 
 let rec phi (t : binary_tree) = match t with
@@ -28,17 +28,17 @@ let rec find l s = match l with
 
 let rec c_size (t : c_tree) = match t with
     | Empty -> 0
-    | Node(l, _, r, _, _) -> 1 + c_size l + c_size r
+    | Node(l, _, r, _) -> 1 + c_size l + c_size r
     | C_Node(_, a) -> Array.length a ;;
 
-let rec c_get_size (t : c_tree) = match t with 
-    | Empty -> (0, 0)
-    | Node(_, _, _, ls, rs) -> (ls, rs)
-    | C_Node(tree, _) -> c_get_size !tree ;;
+let rec c_get_left_size (t : c_tree) = match t with 
+    | Empty -> 0
+    | Node(_, _, _, ls) -> ls
+    | C_Node(tree, _) -> c_get_left_size tree ;;
 
 let compress (t : binary_tree) : c_tree = 
     let patterns = ref [] in
-
+    
     let rec aux (t:binary_tree) = match t with
     | Empty -> Empty
     | Node(l, e, r) -> 
@@ -55,15 +55,15 @@ let compress (t : binary_tree) : c_tree =
             | None -> aux r 
             | Some(tree) -> C_Node(tree, prefix_array r) in 
 
-        let node = ref (Node(left, e, right, c_size left , c_size right)) in
-        (patterns:= (phi t, node) :: !patterns ; !node) in  
+        let node = (Node(left, e, right, c_size left)) in
+        (patterns:= (phi t, node) :: !patterns ; node) in  
     aux t ;;
 
 
 let rec search (t : c_tree) x = 
     let rec aux t x i arr = match t with
     | Empty -> false 
-    | Node(l, e, r, ls, rs) -> 
+    | Node(l, e, r, ls) -> 
         let elem = if arr = [||] then e else arr.(i) in
         if x = elem then true
         else if x<elem then
@@ -72,7 +72,7 @@ let rec search (t : c_tree) x =
             if arr=[||] then aux r x i arr else aux r x (i+1+ls) arr      
     | C_Node(tree, a) ->
         let array = if arr = [||] then a else arr in 
-        aux !tree x i array in
+        aux tree x i array in
         
     aux t x 0 [||] ;;
 

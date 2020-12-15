@@ -14,6 +14,7 @@ let extraction_alea l p =
 
 let range i j = 
     (* tail recursive *)
+    if j<i then [] else
     let rec aux j acc = 
         if i==j then (i :: acc) else aux (j-1) (j :: acc) in 
     (aux j [])
